@@ -11,30 +11,10 @@ from tokenize import Name
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet,UserUtteranceReverted, ActionReverted
-from datetime import datetime, timedelta
-from regex import P
-import wikipedia
-from Features.news import get_news
-import webbrowser
-from Features.alarm import set_alarm
-from Features.joke import startJoke
-from Features.weather import weather_from_city, weather_local
-from Features.wishme import wishMe
-from Features.object_detection import object_detection,get_object
-from Features. navigation import navigation, get_direction
-from sanic.config import Config
-from Features.asia_landmarks import landmark_detection_with_address
-from Features.get_image import get_image
-from Features.text_detector import text_detector
-from inference.video_classifier import face_recongizer
-from Features.speak import speak
-from Features.listen import listen
 from Features.FaceRecognition import FaceRecognition
 from Features.csv_writer import prev_response
-import os
-Config.KEEP_ALIVE_TIMEOUT = 60
-Config.KEEP_ALIVE = False
+
+
 try:
     import pywhatkit
 except Exception as e:
@@ -57,20 +37,6 @@ def dict_to_word(dict):
     return word
 
 
-
-class ActionFallBack(Action):
-
-    def name(self) -> Text:
-        return "action_fallback"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-            
-            dispatcher.utter_message(text="Sorry, I didn't get that. Can you please rephrase it?")
-            """
-            A proper approach to implement this would be to have a fallback action by listing all the things that the bot can do. by using the buttons
-            """
 
 class ActionRepeat(Action):
 
