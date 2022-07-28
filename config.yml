@@ -44,8 +44,3 @@ policies:
     max_history: 5
     epochs: 100
     constrain_similarities: true
-  - name: FallbackPolicy 
-    nlu_threshold: 0.5
-    core_threshold: 0.3
-    ambiguity_threshold: 0.1 
-    fallback_action_name: action_fallback

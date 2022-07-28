@@ -1,0 +1,1 @@
+conda activate bss && python -m face_recog_wo_speak

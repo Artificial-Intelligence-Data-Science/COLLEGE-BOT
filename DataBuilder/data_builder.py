@@ -4,10 +4,10 @@ import os, shutil
 from DataBuilder.augmentation import Augmentation
 
 class Data_builder:
-    def __init__(self, name):
+    def __init__(self, name, dir):
         self.name = name
         self.count = 0
-        self.path = f"images\\{self.name}\\"
+        self.path = f"{dir}\\{self.name}\\"
     def check_file(self, file):
         if os.path.exists(file):
             print("File Exists")
