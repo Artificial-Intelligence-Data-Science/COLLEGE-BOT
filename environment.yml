@@ -106,6 +106,7 @@ dependencies:
     - cycler==0.11.0
     - dataset==1.5.2
     - decorator==4.4.2
+    - deepface==0.0.75
     - distlib==0.3.4
     - distro==1.7.0
     - dm-tree==0.1.6
@@ -114,9 +115,11 @@ dependencies:
     - facenet-pytorch==2.5.2
     - fbmessenger==6.0.0
     - filelock==3.6.0
+    - fire==0.4.0
     - flask-restplus==0.13.0
     - future==0.18.2
     - gast==0.3.3
+    - gdown==4.5.1
     - geocoder==1.38.1
     - geographiclib==1.52
     - geopy==2.2.0
@@ -194,6 +197,7 @@ dependencies:
     - redis==3.5.3
     - regex==2021.7.6
     - requests-toolbelt==0.9.1
+    - retina-face==0.0.12
     - rfc3986==1.5.0
     - rocketchat-api==1.16.0
     - ruamel-yaml==0.16.13
