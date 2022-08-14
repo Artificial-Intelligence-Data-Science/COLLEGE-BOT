@@ -1,11 +1,16 @@
+from msilib.schema import Directory
 from Features.speak import speak
 from inference.video_classifier import face_recongizer
 from Features.main_face import create_training_image_folder
 from deepface import DeepFace
 from Features.get_image import get_image
 from Features.csv_writer import append_data
+from Features.save_snapshot import SaveImageFromArray
 import os
 import shutil
+import datetime
+import cv2
+timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 def verify_face():
     print("Verifying Face")
@@ -15,7 +20,8 @@ def verify_face():
             if len(os.listdir(os.path.join("Verification Buffer", folder))) > 0:
                 images = os.listdir(os.path.join("Verification Buffer", folder))
                 print("Images: ", images)
-                result = DeepFace.verify(get_image(), 
+                img = get_image()
+                result = DeepFace.verify(img, 
                                         f"Verification Buffer\\{folder}\\{images[0]}",
                                         model_name = 'Facenet512',
                                         distance_metric = 'cosine', 
@@ -24,6 +30,12 @@ def verify_face():
                                         normalization = 'Facenet512')
                 print("Result: ", result)
                 if result['verified']:
+                    directory = os.path.join('logs\Verification Images',str(timestamp))
+                    append_data(r'logs\\face_verification.csv',result,folder)
+                    os.mkdir(directory)
+                    SaveImageFromArray(cv2.imread(f'Verification Buffer\\{folder}\\{images[0]}_train') , directory)
+                    SaveImageFromArray(img , directory)
+            
                     return result, folder
             else:
                 print("No images in folder: ", folder)
