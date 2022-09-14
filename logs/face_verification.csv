@@ -1,0 +1,2 @@
+date,time,query,response
+2022-09-14,08:03:40,"{'verified': True, 'distance': 0.1819740092885893, 'threshold': 0.3, 'model': 'Facenet512', 'detector_backend': 'mtcnn', 'similarity_metric': 'cosine'}",Prajwal
